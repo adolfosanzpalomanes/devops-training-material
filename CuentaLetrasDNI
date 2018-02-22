@@ -1,0 +1,173 @@
+*******************************************************************************/
+//DECLARACICON LIBRERIAS
+#include <stdio.h>
+//ECLARACICON CONSTANTES
+#define LONG_MAX_LINEA  1024	//definimos las longitud que vamo a leer dese fichero
+
+
+//DECLARACICÓN VARIABLES GLOBALES
+typedef struct DNI		//declaramos una estructura de datos
+{
+  char letra;			//letras del DNI
+  int contador;			//Contador nC:mero de letras
+
+} EstructuraDNI;		//Nombre d ela estructura
+
+//INICIALIZAMOS LA ARRAY DE ESTRUCTURAS
+EstructuraDNI letrasDni[27] = {
+  'A', 0,
+  'B', 0,
+  'C', 0,
+  'D', 0,
+  'E', 0,
+  'F', 0,
+  'G', 0,
+  'H', 0,
+  'I', 0,
+  'J', 0,
+  'K', 0,
+  'L', 0,
+  'M', 0,
+  'N', 0,
+  'C', 0,
+  'O', 0,
+  'P', 0,
+  'Q', 0,
+  'R', 0,
+  'S', 0,
+  'T', 0,
+  'U', 0,
+  'V', 0,
+  'W', 0,
+  'X', 0,
+  'Y', 0,
+  'Z', 0,
+
+};
+
+
+	//COMIENZA PROGRAMA PRINCIPAL  
+int
+main ()
+{
+  //Bloque de declaraciones 
+  int i = 0;			//variable para recorrer el array de estructuras
+  int numerror = 0;		//Contador externo que usaremos para contabilizar el nC:mero de errores
+  char opcion;			// usaremos para recoger la letra del DNI 
+  char linea[1024];		//tamaC1o maximo d ela linea que vamos a leer del fichero
+  FILE *fich;			//puntero para leer fichero
+
+  //abrimos fichero (con su ruta). La r es de lectura 
+  fich = fopen ("fichero.txt", "r");
+
+
+  //Bucle que lee donde leemos fichero
+  while (fgets (linea, LONG_MAX_LINEA, fich) != NULL)
+    {				//Lemos el fichero linea a linea
+
+      opcion = linea[8];	//recogemos el caracter del DNI sabiendo que se encuentra en la posiciC3n 8 ya que empieza desde la zero
+
+      switch (opcion)
+	{
+	case 'A':
+	  letrasDni[0].contador += 1;
+	  break;
+	case 'B':
+	  letrasDni[1].contador += 1;
+	  break;
+	case 'C':
+	  letrasDni[2].contador += 1;
+	  break;
+	case 'D':
+	  letrasDni[3].contador += 1;
+	  break;
+	case 'E':
+	  letrasDni[4].contador += 1;
+	  break;
+	case 'F':
+	  letrasDni[5].contador += 1;
+	  break;
+	case 'G':
+	  letrasDni[6].contador += 1;
+	  break;
+	case 'H':
+	  letrasDni[7].contador += 1;
+	  break;
+	case 'I':
+	  letrasDni[8].contador += 1;
+	  break;
+	case 'J':
+	  letrasDni[9].contador += 1;
+	  break;
+	case 'K':
+	  letrasDni[10].contador += 1;
+	  break;
+	case 'L':
+	  letrasDni[11].contador += 1;
+	  break;
+	case 'M':
+	  letrasDni[12].contador += 1;
+	  break;
+	case 'N':
+	  letrasDni[13].contador += 1;
+	  break;
+	case 'Ñ':
+	  letrasDni[14].contador += 1;
+	  break;
+	case 'O':
+	  letrasDni[15].contador += 1;
+	  break;
+	case 'P':
+	  letrasDni[16].contador += 1;
+	  break;
+	case 'Q':
+	  letrasDni[17].contador += 1;
+	  break;
+	case 'R':
+	  letrasDni[18].contador += 1;
+	  break;
+	case 'S':
+	  letrasDni[19].contador += 1;
+	  break;
+	case 'T':
+	  letrasDni[20].contador += 1;
+	  break;
+	case 'U':
+	  letrasDni[21].contador += 1;
+	  break;
+	case 'V':
+	  letrasDni[22].contador += 1;
+	  break;
+	case 'W':
+	  letrasDni[23].contador += 1;
+	  break;
+	case 'X':
+	  letrasDni[24].contador += 1;
+	  break;
+	case 'Y':
+	  letrasDni[25].contador += 1;
+	  break;
+	case 'Z':
+	  letrasDni[26].contador += 1;
+	  break;
+
+	default:
+	  printf ("Error: No es una Letra\n");
+	  numerror += 1;
+	  break;
+	}
+
+    }
+  fclose (fich);		//Cerramos fichero de lectura
+
+  //imprimimos los resultados en pantalla
+  for (i = 0; i < 27; i++)
+    {
+      printf ("Letra %c Numero veces: %d \n", letrasDni[i].letra,
+	      letrasDni[i].contador);
+
+    }
+  printf ("Error: Numero de Letras DNI equivocadas  %d\n", numerror);	//mosatramos en pantalla el nC:mero de errores
+
+  return 0;
+}
